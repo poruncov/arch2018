@@ -62,16 +62,28 @@ elif [[ $grub_set == 0 ]]; then
   echo 'Пропускаем.'
 fi
 
+#echo 'Установить conky?'
+#read -p "1 - Да, 0 - Нет: " conky_set
+#if [[ $conky_set == 1 ]]; then
+#  sudo pacman -S conky conky-manager --noconfirm
+#  wget git.io/conky.tar.gz
+#  tar -xzf conky.tar.gz -C $HOME/
+#elif [[ $conky_set == 0 ]]; then
+#  echo 'Установка conky пропущена.'
+#fi
 echo 'Установить conky?'
-read -p "1 - Да, 0 - Нет: " conky_set
+read -p "1 - для XFCE, 2 - для KDE, 0 - Нет: " conky_set
 if [[ $conky_set == 1 ]]; then
   sudo pacman -S conky conky-manager --noconfirm
   wget git.io/conky.tar.gz
   tar -xzf conky.tar.gz -C $HOME/
+elif [[ $conky_set == 2 ]]; then
+  sudo pacman -S conky conky-manager --noconfirm
+  wget git.io/conky-kde.tar.gz
+  tar -xzf conky-kde.tar.gz -C $HOME/
 elif [[ $conky_set == 0 ]]; then
   echo 'Установка conky пропущена.'
 fi
-
 echo 'Включаем сетевой экран'
 sudo ufw enable
 
